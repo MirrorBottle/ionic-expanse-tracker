@@ -1,0 +1,7 @@
+{
+  "name": "expanse-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
