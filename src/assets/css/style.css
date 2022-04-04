@@ -1,0 +1,13 @@
+ion-content {
+  --offset-bottom: auto!important;
+  --overflow: hidden;
+  overflow: auto;
+}
+ion-content::-webkit-scrollbar {
+  display: none;
+}
+
+ion-list {
+  background: transparent!important;
+  --ion-item-background: transparent;
+}
