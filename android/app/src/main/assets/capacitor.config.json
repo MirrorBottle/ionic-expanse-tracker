@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "expanse-tracker",
+	"appId": "expanse.bayusetiawan.app",
+	"appName": "Expanse Tracker",
 	"webDir": "dist",
 	"bundledWebRuntime": false
 }

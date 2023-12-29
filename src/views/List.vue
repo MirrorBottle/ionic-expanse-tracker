@@ -37,6 +37,7 @@
             <p>{{ toRupiah(expanse.expanse) }}</p>
           </div>
         </ion-item>
+        <ion-button expand="block" color="dark" @click="handleExport" style="margin-top: 20px;">Export</ion-button>
       </ion-list>
     </ion-content>
   </ion-page>
@@ -44,12 +45,13 @@
 
 <script  >
 import { defineComponent } from 'vue';
-import { IonPage, IonList, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonItemDivider, IonContent } from '@ionic/vue';
+import { IonPage, IonList, IonItem, IonLabel, IonButton, IonInput, IonSelect, IonSelectOption, IonItemDivider, IonContent } from '@ionic/vue';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import Navbar from '@/components/Navbar.vue';
 
 export default  defineComponent({
   name: 'List',
-  components: { Navbar, IonPage, IonList, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonItemDivider, IonContent },
+  components: { Navbar, IonPage, IonList, IonItem, IonLabel, IonButton, IonInput, IonSelect, IonSelectOption, IonItemDivider, IonContent },
   data() {
     return {
       expanses: [],
@@ -96,6 +98,13 @@ export default  defineComponent({
     toRupiah(val) {
       return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(parseInt(val)).split(",00")[0]
     },
+    async handleExport() {
+      await Filesystem.writeFile({
+        path: "expanses.txt",
+        data: btoa(localStorage.getItem('EXPANSE_TRACKER_EXPANSES')), // your data to write (ex. base64)
+        directory: Directory.External
+      });
+    }
   }
 });
 </script>
